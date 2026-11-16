@@ -55,7 +55,13 @@ Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md` (ch�
 
 ## 6. Tổng hợp đóng góp
 
-Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng đóng góp) và báo cáo cá nhân `report/team/MSSV_HoTen.md`.
+| Thành viên | Phần việc | Test | Báo cáo cá nhân |
+| --- | --- | --- | --- |
+| Nguyễn Khôi Nguyên (2A202603453) | Tích hợp; viết 3 shape workflow / single / orchestrator; ablation R1; benchmark, crash; ADR, research card, báo cáo nhóm | `test_group_shapes.py`, `test_bonus_orchestrator_x2.py` | `2A202603453_NguyenKhoiNguyen.md` |
+| Dương Văn Công (2A202603468) | Ranh giới agent của single + orchestrator: write tool bị chặn, handoff allowlist, escalated không lộ PII, chống prompt injection; review research card | `test_member_cong_agent_boundary.py` | `2A202603468_DuongVanCong.md` |
+| Lê Quang Huy (2A202603470) | Ranh giới host: approval cũ, trần theo đơn, trả phần chênh, idempotency; chạy lại benchmark + crash; review ADR | `test_member_huy_durability.py` | `2A202603470_LeQuangHuy.md` |
+
+Commit của từng người xem trong bảng đóng góp của `TEAM.md` và `git log`. Tổng cộng cổng host `pytest -q` có 116 test xanh sau khi gộp test của cả nhóm.
 
 ## 7. Hạn chế và hướng cải thiện
 
