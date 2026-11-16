@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Nguyễn Khôi Nguyên | 2A202603453 | nguyenkhoinguyen07122005@gmail.com | nguyenkhoinguyen07122005-cpu | Integration + 3 shape (workflow, single, orchestrator) + ablation R1 + báo cáo nhóm |
 |   2 | Dương Văn Công | 2A202603468 | __EMAIL_CONG__ | __GITHUB_CONG__ | Ranh giới agent (single + orchestrator): review vòng ReAct, handoff allowlist, test an toàn agent, review research card |
-|   3 | Lê Quang Huy | 2A202603470 | __EMAIL_HUY__ | __GITHUB_HUY__ | Ledger / approval / crash + evaluation: test host trên 3 shape, chạy lại benchmark + crash, review ADR |
+|   3 | Lê Quang Huy | 2A202603470 | lehuy20112002@gmail.com | huylq2002-art | Ledger / approval / crash + evaluation: test host trên 3 shape, chạy lại benchmark + crash, review ADR |
 
 Gợi ý chia vai:
 
@@ -28,7 +28,7 @@ Gợi ý chia vai:
 | --- | --- | --- | --- |
 | Nguyễn Khôi Nguyên (2A202603453) | workflow, single, orchestrator, ablation R1, benchmark/crash, ADR, research card, báo cáo nhóm | 25ec330 | `src/tests/test_group_shapes.py` (ticket delay không được tin, trace sạch mọi nhánh, step cap, handoff sanitize, crash rồi resume trả 1 lần), `src/tests/test_bonus_orchestrator_x2.py` |
 | Dương Văn Công (2A202603468) | ranh giới agent single + orchestrator, review research card | __HASH_CONG__ | `src/tests/test_member_cong_agent_boundary.py` (dispatch từ chối write tool, handoff từ chối write tool + lọc secret, đơn của người khác → escalated không lộ PII, ticket prompt injection không ép được refund) |
-| Lê Quang Huy (2A202603470) | ledger / approval / crash, chạy lại benchmark + crash, review ADR | __HASH_HUY__ | `src/tests/test_member_huy_durability.py` (approval cũ → host từ chối + policy_denied, trần theo đơn T13, chỉ trả phần chênh T14, retry idempotent một dòng ledger) |
+| Lê Quang Huy (2A202603470) | ledger / approval / crash, chạy lại benchmark + crash, review ADR | eb5304e | `src/tests/test_member_huy_durability.py` (approval cũ → host từ chối + policy_denied, trần theo đơn T13, chỉ trả phần chênh T14, retry idempotent một dòng ledger) |
 
 ## Cá nhân
 
@@ -74,7 +74,7 @@ Mỗi thành viên có báo cáo riêng trong `report/team/`:
 
 ### Đóng góp cụ thể
 
-- Commit __HASH_HUY__; test `src/tests/test_member_huy_durability.py`.
+- Commit eb5304e; test `src/tests/test_member_huy_durability.py`.
 
 ### Bằng chứng
 
