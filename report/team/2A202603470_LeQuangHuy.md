@@ -14,7 +14,7 @@
 
 ## 3. Đóng góp cụ thể
 
-- Commit: eb5304e
+- Commit: __HASH__
 - Test thêm: `src/tests/test_member_huy_durability.py` (12 case, mỗi test chạy trên workflow, single, orchestrator):
   - `test_stale_approval_is_denied_by_host`: T07, approval cũ thì host từ chối, có audit `policy_denied`, proposal vẫn là full quote 35000, ledger rỗng.
   - `test_order_already_refunded_hits_cap`: T13, đơn đã hoàn đủ thì bị `denied` theo trần, không ghi thêm.
