@@ -25,7 +25,7 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Nguyễn Khôi Nguyên (2A202603453) | workflow, single, orchestrator, R1 ablation, benchmark/crash, report | __COMMIT__ | `tests/test_group_shapes.py` (ticket delay không được tin, trace sạch mọi nhánh, step cap, handoff sanitize, crash rồi resume trả 1 lần), `tests/test_bonus_orchestrator_x2.py` |
+| Nguyễn Khôi Nguyên (2A202603453) | workflow, single, orchestrator, R1 ablation, benchmark/crash, report | 25ec330 | `tests/test_group_shapes.py` (ticket delay không được tin, trace sạch mọi nhánh, step cap, handoff sanitize, crash rồi resume trả 1 lần), `tests/test_bonus_orchestrator_x2.py` |
 
 ## Cá nhân
 
@@ -47,7 +47,7 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- Commit __COMMIT__; test `tests/test_group_shapes.py`, `tests/test_bonus_orchestrator_x2.py`.
+- Commit 25ec330; test `tests/test_group_shapes.py`, `tests/test_bonus_orchestrator_x2.py`.
 
 ### Bằng chứng
 

@@ -15,7 +15,7 @@
 
 ## 3. Đóng góp cụ thể
 
-- Commit chính: __COMMIT__
+- Commit chính: 25ec330
 - Test thêm: `tests/test_group_shapes.py` (41 case: không tin số ngày trễ trong ticket ở 5 seed, trace sạch trên mọi nhánh kể cả claim không tồn tại, single không vượt 8 step, handoff orchestrator chỉ có fact allowlist và tool chỉ đọc, crash ở 3 điểm rồi chạy lại vẫn chỉ 1 refund 35000); `tests/test_bonus_orchestrator_x2.py` (2 case).
 - Quyết định kỹ thuật: shape luôn gửi toàn bộ quote cho host (host tự trừ phần đã hoàn và kiểm approval); không đọc ticket để lấy order id hay số ngày; trace không ghi ticket; orchestrator tính lại quote và đối chiếu với investigator; chọn workflow vì cùng pass nhưng rẻ nhất.
 
