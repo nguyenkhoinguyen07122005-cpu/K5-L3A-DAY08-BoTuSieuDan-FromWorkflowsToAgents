@@ -17,19 +17,19 @@ Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62�
 
 | Field | Hướng dẫn | Nhóm điền |
 | --- | --- | --- |
-| CÂU | R1 / R2 / R3 / R4 | |
-| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | |
-| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | |
-| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | |
-| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | |
-| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | |
-| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | |
+| CÂU | R1 / R2 / R3 / R4 | R1 · Scaling |
+| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | Kim et al., Google Research / Google DeepMind / MIT, *Towards a Science of Scaling Agent Systems*, 2025–2026, https://arxiv.org/abs/2512.08296 (blog: https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/). Loại bằng chứng: benchmark có kiểm soát (180 cấu hình agent) |
+| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | Phối hợp nhiều agent cải thiện rõ trên task song song hóa được nhưng có thể làm giảm hiệu năng trên task tuần tự; cách tiếp cận "thêm agent" thường chạm trần |
+| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | Kết luận đo trên các agentic benchmark của paper, với model thật thuộc 3 họ (OpenAI, Google, Anthropic) và ngân sách token cố định; không đo trên tác vụ có host ghi tiền như claim hoàn tiền, không dùng MockLLM |
+| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | Claim LogiX là chuỗi tuần tự (đọc claim → đọc đơn → quote → host). Tăng số investigator của orchestrator từ 1 lên 2: pass rate và pass^5 giữ nguyên 1.000 (không tăng), cost/success tăng khoảng 40–70%, mean steps tăng 1–2 |
+| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | Giữ cố định: MockLLM seeded, tool manifest, seed 11/22/33/44/55, 14 claim public, `config/pricing.yaml`, evaluator `lab8.metrics.trial_pass`, SQLite riêng mỗi trial. Biến duy nhất được thay đổi: số investigator read-only (1 → 2; investigator thứ 2 đọc lại đơn + policy và quote độc lập, lệch thì `failed`). Code: `src/bonus/orchestrator_two_investigators.py` |
+| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | Lỗi dự kiến: investigator thêm vào làm tăng chi phí mà không tăng chất lượng; nếu hai investigator lệch nhau thì shape trả `failed`, làm giảm pass. Đo: pass rate, pass^5, variance, cost/success, mean steps; safety (leak, bypass) phải giữ 0 |
 
 ## Kết quả ablation
 
-- Lệnh đã chạy (copy nguyên văn):
-- Run id / file report:
-- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu:
-- Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`.
+- Lệnh đã chạy (copy nguyên văn): `python -m lab8.benchmark --shapes orchestrator,orchestrator_x2 --extra-shape orchestrator_x2=bonus.orchestrator_two_investigators:run_claim --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/bonus_benchmark.json` (chạy trong `src/`)
+- Run id / file report: `src/reports/bonus_benchmark.json`; ví dụ `R-orchestrator-C-003-s11` so với `R-orchestrator_x2-C-003-s11`
+- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu: **Đúng.** orchestrator: pass 1.000, pass^5 1.000, variance 0, cost/success 56.66 VND, mean steps 7.00. orchestrator_x2: pass 1.000, pass^5 1.000, variance 0, cost/success 91.58 VND (+61.6%), mean steps 8.71 (+1.71). Thêm investigator không tăng chất lượng trên task tuần tự, chỉ tăng chi phí, khớp với claim của paper trong phạm vi lab này.
+- Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`. Pass đã bão hòa ở 1.000 nên ablation không đo được phần "giảm hiệu năng" của claim; chỉ đo được phần chi phí. Chỉ có 14 claim public.
 
 Muốn đi xa hơn một ablation để lấy điểm cộng thì xem [docs/bonus_topics.md](../../docs/bonus_topics.md).
