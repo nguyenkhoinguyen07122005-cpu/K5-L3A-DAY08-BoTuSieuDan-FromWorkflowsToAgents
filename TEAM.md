@@ -26,9 +26,9 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Nguyễn Khôi Nguyên (2A202603453) | workflow, single, orchestrator, ablation R1, benchmark/crash, ADR, research card, báo cáo nhóm | 25ec330 | `src/tests/test_group_shapes.py` (ticket delay không được tin, trace sạch mọi nhánh, step cap, handoff sanitize, crash rồi resume trả 1 lần), `src/tests/test_bonus_orchestrator_x2.py` |
-| Dương Văn Công (2A202603468) | ranh giới agent single + orchestrator, review research card | __HASH_CONG__ | `src/tests/test_member_cong_agent_boundary.py` (dispatch từ chối write tool, handoff từ chối write tool + lọc secret, đơn của người khác → escalated không lộ PII, ticket prompt injection không ép được refund) |
-| Lê Quang Huy (2A202603470) | ledger / approval / crash, chạy lại benchmark + crash, review ADR | eb5304e | `src/tests/test_member_huy_durability.py` (approval cũ → host từ chối + policy_denied, trần theo đơn T13, chỉ trả phần chênh T14, retry idempotent một dòng ledger) |
+| Nguyễn Khôi Nguyên (2A202603453) | workflow, single, orchestrator, ablation R1, benchmark/crash, ADR, research card, báo cáo nhóm | 25ec330 | `src/tests/test_group_shapes.py`: `test_ticket_delay_is_never_trusted`, `test_trace_written_and_clean_on_every_path`, `test_single_stays_under_step_cap`, `test_orchestrator_handoff_is_sanitized`, `test_crash_then_resume_pays_once`; `src/tests/test_bonus_orchestrator_x2.py`: `test_two_investigators_same_outcome_more_cost`, `test_two_investigators_still_forward_crash` |
+| Dương Văn Công (2A202603468) | ranh giới agent single + orchestrator, review research card | __HASH_CONG__ | `src/tests/test_member_cong_agent_boundary.py`: `test_react_dispatch_rejects_write_tools`, `test_handoff_refuses_write_tool_and_secret`, `test_foreign_order_escalates_without_pii`, `test_prompt_injection_ticket_cannot_force_refund` |
+| Lê Quang Huy (2A202603470) | ledger / approval / crash, chạy lại benchmark + crash, review ADR | eb5304e | `src/tests/test_member_huy_durability.py`: `test_stale_approval_is_denied_by_host`, `test_order_already_refunded_hits_cap`, `test_partial_refund_pays_only_difference`, `test_retry_is_idempotent_and_reported_once` |
 
 ## Cá nhân
 
