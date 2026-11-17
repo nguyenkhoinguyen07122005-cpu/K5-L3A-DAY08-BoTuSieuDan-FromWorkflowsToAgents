@@ -14,7 +14,7 @@
 
 ## 3. Đóng góp cụ thể
 
-- Commit: __HASH__
+- Commit: 52cfa83
 - Test thêm: `src/tests/test_member_cong_agent_boundary.py` (7 case):
   - `test_react_dispatch_rejects_write_tools`: vòng ReAct gọi tool qua `dispatch`, `issue_refund` và `append_audit` phải bị `ToolRejected`, nên model không có đường ghi tiền.
   - `test_handoff_refuses_write_tool_and_secret`: `make_handoff` từ chối write tool; `facts` chứa `parent_secret` hay `ticket` bị lọc, chỉ còn key trong `FACT_KEYS`.
